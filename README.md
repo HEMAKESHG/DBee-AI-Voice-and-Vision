@@ -59,11 +59,11 @@ The project integrates:
 
 ```text
 User → Frontend → Node.js Backend → Dialogflow ES → Response
-
+```
 ---
 
 # 📂 Project Structure
-
+```
 DBee-AI-Voice-and-Vision/
 │
 ├── voicebot.html
@@ -72,8 +72,10 @@ DBee-AI-Voice-and-Vision/
 ├── package-lock.json
 ├── README.md
 └── .gitignore
+```
 
 ## 🚀 How to Run
+```
 Install Dependencies
 npm install
 Start Backend
@@ -81,28 +83,34 @@ node server.js
 Open Frontend
 
 Open voicebot.html using Live Server.
+```
 ---
 ## 🧠 Concepts Used
+```
 Artificial Intelligence
 Natural Language Processing
 REST APIs
 Event-Driven Programming
 Voice Recognition
-🔥 Highlights
+```
+## 🔥 Highlights
 ---
+```
 ✅ AI-Powered Educational Chatbot
 ✅ Voice + Text Communication
 ✅ Real-Time Conversational Experience
 ✅ Responsive UI
 ✅ Prize-Winning Project
+```
 ---
 ## 📈 Future Enhancements
+```
 Multi-language Support
 Advanced AI Models
 Personalized Learning
 Mobile Application
 Cloud Deployment
-
+```
 
 # 👨‍💻 Author
 ```
