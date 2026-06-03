@@ -1,5 +1,7 @@
 # 🐝 DBee — AI Voice & Vision Study Companion
 
+## Date: Nov 5, 2025
+
 <p align="center">
   <img src="https://img.shields.io/badge/AI-Powered-blueviolet?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Dialogflow-ES-orange?style=for-the-badge&logo=googlecloud" />
