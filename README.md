@@ -1,4 +1,4 @@
-# 🐝 DBee — AI Voice & Vision Study Companion
+# 🐝 DBee — AI Voice Study Companion
 
 ## Date: Nov 5, 2025
 
