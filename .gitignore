@@ -1,3 +1,6 @@
 node_modules/
 service-account.json
 .env
+.env.*
+!.env.example
+dbee-spring/target/
