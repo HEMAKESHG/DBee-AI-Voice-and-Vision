@@ -25,7 +25,7 @@
 
 ## 🏆 Project Achievement
 
-- 🥇 **1st Prize Winner** at **Drestin'26**
+- 🥇 **1st Prize Winner** at **Drestin'25**
 - 🎯 **Event Track:** **AI Voice and Vision**
 - 💡 **Recognized For:** Seamless voice integration, NLP-driven interactive DBMS pedagogy, and robust full-stack architecture.
 
