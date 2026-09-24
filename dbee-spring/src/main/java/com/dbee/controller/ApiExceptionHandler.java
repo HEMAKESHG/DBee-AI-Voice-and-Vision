@@ -31,7 +31,15 @@ public class ApiExceptionHandler {
     @ExceptionHandler(Exception.class)
     ResponseEntity<ErrorResponse> handleUnexpected(Exception error) {
         logger.error("Unhandled API error", error);
+        String msg = error.getMessage();
+        Throwable cause = error.getCause();
+        while (cause != null) {
+            if (cause.getMessage() != null && !cause.getMessage().isBlank()) {
+                msg = cause.getMessage();
+            }
+            cause = cause.getCause();
+        }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(new ErrorResponse("Something went wrong. Please try again."));
+                .body(new ErrorResponse(msg != null ? msg : "Internal server error"));
     }
 }
