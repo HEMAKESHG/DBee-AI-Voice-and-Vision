@@ -16,10 +16,12 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+        String origin = properties.frontendOrigin();
+        String trimmed = (origin != null && !origin.isBlank()) ? origin.replaceAll("/+$", "") : "http://localhost:8000";
         registry.addMapping("/**")
-                .allowedOrigins(properties.frontendOrigin())
+                .allowedOrigins(trimmed, trimmed + "/")
                 .allowedMethods("GET", "POST", "PATCH", "DELETE", "OPTIONS")
-                .allowedHeaders("Content-Type", "X-Requested-With")
+                .allowedHeaders("*")
                 .allowCredentials(true);
     }
 }
