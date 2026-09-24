@@ -36,7 +36,7 @@
 > 
 > *When a student speaks a query, the audio is transcribed in the browser, packaged with a stateless JWT Bearer token, and sent over HTTPS to our backend. The backend authenticates the student via Spring Security, logs the message into a TiDB Serverless distributed MySQL cluster via Spring Data JPA, and queries Google Dialogflow ES over high-performance gRPC. The AI-analyzed response is persisted, returned as JSON, displayed in a responsive glassmorphic UI, and read aloud to the student through speech synthesis.*
 > 
-> *This decoupled, cloud-native architecture won 1st Prize at Drestin'26 in the AI Voice & Vision category."*
+> *This decoupled, cloud-native architecture won 1st Prize at Drestin'25 in the AI Voice & Vision category."*
 
 ---
 
