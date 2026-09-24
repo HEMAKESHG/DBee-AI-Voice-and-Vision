@@ -16,12 +16,17 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        String origin = properties.frontendOrigin();
-        String trimmed = (origin != null && !origin.isBlank()) ? origin.replaceAll("/+$", "") : "http://localhost:8000";
         registry.addMapping("/**")
-                .allowedOrigins(trimmed, trimmed + "/")
-                .allowedMethods("GET", "POST", "PATCH", "DELETE", "OPTIONS")
+                .allowedOriginPatterns(
+                        "https://*.github.io",
+                        "https://hemakeshg.github.io",
+                        "http://localhost:*",
+                        "http://127.0.0.1:*"
+                )
+                .allowedMethods("GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS", "HEAD")
                 .allowedHeaders("*")
-                .allowCredentials(true);
+                .exposedHeaders("Set-Cookie")
+                .allowCredentials(true)
+                .maxAge(3600);
     }
 }
