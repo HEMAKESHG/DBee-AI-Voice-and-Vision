@@ -814,9 +814,14 @@
     }
 
     async function apiRequest(path, options = {}) {
+      const headers = { 'Content-Type': 'application/json', ...(options.headers || {}) };
+      const token = localStorage.getItem('dbee_jwt_token');
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
       const response = await fetch(`${API_BASE_URL}${path}`, {
         credentials: 'include',
-        headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
+        headers,
         ...options
       });
       if (!response.ok) {
@@ -1064,6 +1069,7 @@
           await createChat();
         }
       } catch {
+        localStorage.removeItem('dbee_jwt_token');
         showAuth();
       }
     }
@@ -1106,6 +1112,9 @@
       event.preventDefault();
       try {
         const data = await apiRequest('/api/auth/login', { method: 'POST', body: JSON.stringify(formDataObject(loginForm)) });
+        if (data.token) {
+          localStorage.setItem('dbee_jwt_token', data.token);
+        }
         showApp(data.user);
         const sessions = await loadSessions();
         if (sessions.length) {
@@ -1122,6 +1131,9 @@
       event.preventDefault();
       try {
         const data = await apiRequest('/api/auth/register', { method: 'POST', body: JSON.stringify(formDataObject(registerForm)) });
+        if (data.token) {
+          localStorage.setItem('dbee_jwt_token', data.token);
+        }
         showApp(data.user);
         await createChat();
       } catch (error) {
@@ -1131,6 +1143,7 @@
 
     document.getElementById('logoutBtn').addEventListener('click', async () => {
       await apiRequest('/api/auth/logout', { method: 'POST' }).catch(() => null);
+      localStorage.removeItem('dbee_jwt_token');
       currentSessionId = null;
       currentUser = null;
       showAuth();

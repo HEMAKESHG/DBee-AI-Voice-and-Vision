@@ -26,5 +26,9 @@ public final class AuthDtos {
             @NotBlank @Size(min = 8, max = 128) String newPassword) {}
 
     public record UserResponse(Long id, String name, String email, Instant createdAt) {}
-    public record UserEnvelope(UserResponse user) {}
+    public record UserEnvelope(UserResponse user, String token) {
+        public UserEnvelope(UserResponse user) {
+            this(user, null);
+        }
+    }
 }

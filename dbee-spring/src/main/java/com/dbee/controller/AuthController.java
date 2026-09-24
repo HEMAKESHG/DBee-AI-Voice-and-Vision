@@ -37,15 +37,17 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<AuthDtos.UserEnvelope> register(@Valid @RequestBody AuthDtos.RegisterRequest request, HttpServletResponse response) {
         User user = userService.register(request);
-        writeCookie(response, jwtService.createToken(user.getId()), Duration.ofMillis(properties.jwtExpirationMs()));
-        return ResponseEntity.status(201).body(new AuthDtos.UserEnvelope(UserService.toResponse(user)));
+        String token = jwtService.createToken(user.getId());
+        writeCookie(response, token, Duration.ofMillis(properties.jwtExpirationMs()));
+        return ResponseEntity.status(201).body(new AuthDtos.UserEnvelope(UserService.toResponse(user), token));
     }
 
     @PostMapping("/login")
     public AuthDtos.UserEnvelope login(@Valid @RequestBody AuthDtos.LoginRequest request, HttpServletResponse response) {
         User user = userService.authenticate(request);
-        writeCookie(response, jwtService.createToken(user.getId()), Duration.ofMillis(properties.jwtExpirationMs()));
-        return new AuthDtos.UserEnvelope(UserService.toResponse(user));
+        String token = jwtService.createToken(user.getId());
+        writeCookie(response, token, Duration.ofMillis(properties.jwtExpirationMs()));
+        return new AuthDtos.UserEnvelope(UserService.toResponse(user), token);
     }
 
     @PostMapping("/logout")
